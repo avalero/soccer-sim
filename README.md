@@ -8,6 +8,7 @@ Clients for RoboCup Soccer Simulator
 
 ## Resources
   * [C++ cross platform UDP/TCP socket library](https://github.com/andreacasalino/Minimal-Socket)
+  * [Simple C++ player - just init](./player/)
 
 ## Teams
 
