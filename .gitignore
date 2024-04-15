@@ -52,3 +52,24 @@ compile_commands.json
 *creator.user*
 
 *_qmlcache.qrc
+
+# All cmake files
+CMakeLists.txt.user
+CMakeCache.txt
+CMakeFiles
+CMakeScripts
+CTestTestfile.cmake
+cmake_install.cmake
+install_manifest.txt
+Makefile
+Testing
+install_manifest.txt
+
+# Deps
+_deps
+
+# Vscode
+.vscode
+
+# Exe
+player
