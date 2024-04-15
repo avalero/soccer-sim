@@ -14,13 +14,13 @@ Clients for RoboCup Soccer Simulator
  - Antonio
  - Luís
 
-### Team 2
+### [Nottingham Miedo](https://github.com/NachoGarciaGodin/RoboCup-Equipo2)
  - Nacho
  - Daniel
  - Laura
  - Javier
 
-### Team 3
+### [pOESIA FC++](https://github.com/veroxandra/RoboCup)
  - Marcos
  - Verónica
  - José
