@@ -6,6 +6,9 @@ Clients for RoboCup Soccer Simulator
  - [Official RoboCup Soccer Simulator](https://rcsoccersim.github.io/)
  - [Resources](https://github.com/rcsoccersim/)
 
+## Resources
+  * [C++ cross platform UDP/TCP socket library](https://github.com/andreacasalino/Minimal-Socket)
+
 ## Teams
 
 ### [Aston Birras](https://github.com/manumorales98/robocup)
