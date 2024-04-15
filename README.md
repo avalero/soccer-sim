@@ -4,6 +4,7 @@ Clients for RoboCup Soccer Simulator
 ## Docuemntation and downloads
 
  - [Official RoboCup Soccer Simulator](https://rcsoccersim.github.io/)
+ - [Resources](https://github.com/rcsoccersim/)
 
 ## Teams
 
