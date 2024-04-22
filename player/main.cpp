@@ -7,10 +7,19 @@ using namespace std;
 #include "types.h"
 #include "parsemessages.h"
 
-int main()
+// main with two args
+int main(int argc, char *argv[])
 {
+    // check if the number of arguments is correct
+    if (argc != 3)
+    {
+        cout << "Usage: " << argv[0] << " <team-name> <this-port>" << endl;
+        return 1;
+    }
 
-    MinimalSocket::Port this_socket_port = 5555;
+    // get the team name and the port
+    string team_name = argv[1];
+    MinimalSocket::Port this_socket_port = std::stoi(argv[2]);
 
     cout << "Creating a UDP socket" << endl;
 
@@ -26,30 +35,25 @@ int main()
         return 1;
     }
 
-    // send a message to another udp
     MinimalSocket::Address other_recipient_udp = MinimalSocket::Address{"127.0.0.1", 6000};
-    udp_socket.sendTo("(init MyTeam(version 19))", other_recipient_udp);
-    cout << "Message sent" << endl;
+    cout << "(init " + team_name + "(version 19))";
 
-    // receive a message from another udp reaching this one
+    udp_socket.sendTo("(init " + team_name + "(version 19))", other_recipient_udp);
+    cout << "Init Message sent" << endl;
+
     std::size_t message_max_size = 1000;
     cout << "Waiting for a message" << endl;
     auto received_message = udp_socket.receive(message_max_size);
-    // check the sender address
-    MinimalSocket::Address other_sender_udp = received_message->sender;
-    // access the received message
-    // resized to the nunber of bytes
-    // actually received
     std::string received_message_content = received_message->received_message;
-    Player player;
-    player.config = parseInitialMessage(received_message_content);
-
-    cout << player << endl;
 
     // update upd port to provided by the other udp
-    MinimalSocket::Address server_upd = MinimalSocket::Address{"127.0.0.1", other_sender_udp.getPort()};
+    MinimalSocket::Address other_sender_udp = received_message->sender;
+    MinimalSocket::Address server_udp = MinimalSocket::Address{"127.0.0.1", other_sender_udp.getPort()};
 
-    // send a message to the udp server - move players, etc. etc.
+    Player player;
+    player.config = parseInitialMessage(received_message_content);
+    cout << player << endl;
+    sendInitialMoveMessage(player, udp_socket, server_udp);
 
     while (true)
     {
@@ -59,7 +63,7 @@ int main()
 
         // PROCESS THE DATA AND SEND A COMMAND TO THE SERVER
 
-        // udp_socket.sendTo("(bla bla bla)", server_upd);
+        // udp_socket.sendTo("(bla bla bla)", server_udp);
     }
 
     return 0;
