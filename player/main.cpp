@@ -3,6 +3,9 @@
 using namespace std;
 
 #include <MinimalSocket/udp/UdpSocket.h>
+#include "stringutils.h"
+#include "types.h"
+#include "parsemessages.h"
 
 int main()
 {
@@ -38,7 +41,10 @@ int main()
     // resized to the nunber of bytes
     // actually received
     std::string received_message_content = received_message->received_message;
-    cout << received_message_content << endl;
+    Player player;
+    player.config = parseInitialMessage(received_message_content);
+
+    cout << player << endl;
 
     // update upd port to provided by the other udp
     MinimalSocket::Address server_upd = MinimalSocket::Address{"127.0.0.1", other_sender_udp.getPort()};
@@ -49,11 +55,11 @@ int main()
     {
         auto received_message = udp_socket.receive(message_max_size);
         std::string received_message_content = received_message->received_message;
-        cout << received_message_content << endl;
+        // cout << received_message_content << endl;
 
         // PROCESS THE DATA AND SEND A COMMAND TO THE SERVER
 
-        udp_socket.sendTo("(bla bla bla)", server_upd);
+        // udp_socket.sendTo("(bla bla bla)", server_upd);
     }
 
     return 0;

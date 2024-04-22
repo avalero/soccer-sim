@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.5)
+cmake_minimum_required(VERSION 3.28)
 
 project(player LANGUAGES CXX)
 
@@ -23,7 +23,15 @@ include_directories(${CMAKE_CURRENT_SOURCE_DIR}/_deps/min_sock-src/src/header)
 # ADD PATH FOR FINDING LIBRARIES
 link_directories(${CMAKE_CURRENT_SOURCE_DIR}/_deps/min_sock-src/build)
 
-add_executable(player main.cpp)
+# Set source files
+set(SOURCE_FILES
+    main.cpp 
+    stringutils.cpp 
+    parsemessages.cpp
+    types.cpp
+)
+
+add_executable(player ${SOURCE_FILES})
 
 # LINK TO MinimalSocket
 target_link_libraries(player MinimalSocket)
