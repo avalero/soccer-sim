@@ -29,6 +29,7 @@ set(SOURCE_FILES
     stringutils.cpp 
     parsemessages.cpp
     types.cpp
+    tictoc.cpp
 )
 
 add_executable(player ${SOURCE_FILES})

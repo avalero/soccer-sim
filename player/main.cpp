@@ -6,6 +6,9 @@ using namespace std;
 #include "stringutils.h"
 #include "types.h"
 #include "parsemessages.h"
+#include "tictoc.h"
+#include <chrono>
+#include <thread>
 
 // main with two args
 int main(int argc, char *argv[])
@@ -55,8 +58,15 @@ int main(int argc, char *argv[])
     cout << player << endl;
     sendInitialMoveMessage(player, udp_socket, server_udp);
 
-    while (true)
+    TicToc clock;
+    clock.tic();
+    while (1)
     {
+        while (clock.toc() < 100)
+        {
+            std::this_thread::sleep_for(std::chrono::milliseconds(1));
+        }
+        clock.tic();
         auto received_message = udp_socket.receive(message_max_size);
         std::string received_message_content = received_message->received_message;
         // cout << received_message_content << endl;
