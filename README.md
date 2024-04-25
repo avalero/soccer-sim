@@ -16,7 +16,6 @@ Clients for RoboCup Soccer Simulator
 
 [Vídeo entrega 1](https://www.youtube.com/watch?v=8vt_QR-CHFo)
 
- - Julio
  - Manuel
  - Antonio
  - Luís
