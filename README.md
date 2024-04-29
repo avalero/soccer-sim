@@ -14,8 +14,8 @@ Clients for RoboCup Soccer Simulator
 
 ### [Aston Birras](https://github.com/manumorales98/robocup)
 
-[Vídeo entrega 1](https://www.youtube.com/watch?v=8vt_QR-CHFo)
-[Vídeo entrega 2](https://www.youtube.com/watch?v=OzB2HugwDEM)
+  * [Vídeo entrega 1](https://www.youtube.com/watch?v=8vt_QR-CHFo)
+  * [Vídeo entrega 2](https://www.youtube.com/watch?v=OzB2HugwDEM)
 
  - Manuel
  - Antonio
@@ -23,8 +23,8 @@ Clients for RoboCup Soccer Simulator
 
 ### [Nottingham Miedo](https://github.com/NachoGarciaGodin/RoboCup-Equipo2)
 
-[Video entrega 1](https://youtu.be/3fuRao7tuGI )
-[Vídeo entrega 2](https://www.youtube.com/watch?v=uIfhe0E4dRY)
+  * [Video entrega 1](https://youtu.be/3fuRao7tuGI )
+  * [Vídeo entrega 2](https://www.youtube.com/watch?v=uIfhe0E4dRY)
 
  - Nacho
  - Daniel
@@ -33,8 +33,8 @@ Clients for RoboCup Soccer Simulator
 
 ### [pOESIA FC++](https://github.com/veroxandra/RoboCup)
 
-[Vídeo entrega 1](https://www.youtube.com/watch?v=EZj3Ui9sVZA)
-[Vídeo entrega 2](https://youtu.be/WoG46Dlhj4k)
+  * [Vídeo entrega 1](https://www.youtube.com/watch?v=EZj3Ui9sVZA)
+  * [Vídeo entrega 2](https://youtu.be/WoG46Dlhj4k)
 
  - Marcos
  - Verónica
