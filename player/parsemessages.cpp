@@ -50,45 +50,47 @@ namespace Parser
   {
     auto messages = splitInParenthesesGroups(message);
 
-    for (string message : messages)
+    for (string m : messages)
     {
-
-      if (message.starts_with("see"))
+      if (m.starts_with("see"))
       {
+        std::cout << "SEE\n==================================================\n"
+                  << message << std::endl;
+        std::cout << m << std::endl;
         // extract time from messages
-        player = parseMatchData(message, player);
-        player = parseSeeMessage(message, player);
+        player = parseMatchData(m, player);
+        player = parseSeeMessage(m, player);
       }
-      else if (message.starts_with("sense_body"))
+      else if (m.starts_with("sense_body"))
       {
         // extract time from messages
-        player = parseMatchData(message, player);
+        player = parseMatchData(m, player);
         // TODO
       }
-      else if (message.starts_with("hear"))
+      else if (m.starts_with("hear"))
       {
-        cout << "Hear message: " << message << endl;
+        cout << "Hear message: " << m << endl;
         // extract time from messages
-        player = parseMatchData(message, player);
+        player = parseMatchData(m, player);
 
-        player = parseHearMessage(message, player);
+        player = parseHearMessage(m, player);
         cout << player << endl;
       }
-      else if (message.starts_with("change_player_type") || message.starts_with("ok"))
+      else if (m.starts_with("change_player_type") || m.starts_with("ok"))
       {
         // TODO
       }
-      else if (message.starts_with("player_type"))
+      else if (m.starts_with("player_type"))
       {
         // TODO
       }
-      else if (message.starts_with("player_param"))
+      else if (m.starts_with("player_param"))
       {
         // TODO
       }
       else
       {
-        cout << "Message not recognized: " << message << endl;
+        cout << "Message not recognized:\n=====================================\n " << m << endl;
       }
     }
     return player;

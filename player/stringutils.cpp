@@ -20,36 +20,37 @@ vector<string> splitInWords(string const &str, char delimiter)
   return words;
 }
 
+// (one (two three) four) (five six)") -> ["one (two three) four", "five six"]
 vector<string> splitInParenthesesGroups(string const &str)
 {
-  vector<string> groups;
-  string group = "";
-  int count = 0;
-  for (auto x : str)
+  vector<string> tokens;
+  string token;
+  int level = 0;
+  for (char c : str)
   {
-    if (x == '(')
+    if (c == '(')
     {
-      count++;
-      continue;
+      if (level > 0)
+        token += c;
+      level++;
     }
-    if (x == ')')
+    else if (c == ')')
     {
-      count--;
-
-      if (count == 0 && group != "")
+      level--;
+      if (level > 0)
+        token += c;
+      else if (level == 0)
       {
-        groups.push_back(group);
-        group = "";
+        tokens.push_back(token);
+        token.clear();
       }
-      continue;
     }
-
-    if (count > 0)
+    else if (level > 0)
     {
-      group = group + x;
+      token += c;
     }
   }
-  return groups;
+  return tokens;
 }
 
 ostream &operator<<(ostream &os, const vector<string> &arr)

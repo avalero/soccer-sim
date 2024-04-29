@@ -13,9 +13,12 @@ namespace Parser
     }
 
     auto see_message = splitInParenthesesGroups(message);
-    // [ "see 0", "((b) 0 0 0 0)" ]
+
+    // std::cout << see_message[0] << std::endl;
+    //  [ "see 0", "((b) 0 0 0 0)" ]
     for (string message : see_message)
     {
+      std::cout << message << std::endl;
       if (message.find("(b)") != std::string::npos)
       {
         player.see = SeeData{See::parseBallData(message, player.see)};
