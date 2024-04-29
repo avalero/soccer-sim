@@ -21,10 +21,10 @@ struct MatchInit
 
 struct BallData
 {
-  double x;
-  double y;
-  double vx;
-  double vy;
+  double distance;
+  double direction;
+  double distance_change;
+  double direction_change;
 };
 
 enum REFEREE_MESSAGE

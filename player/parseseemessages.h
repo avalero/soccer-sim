@@ -1,6 +1,8 @@
 #ifndef PARSESEEMESSAGES_H
 #define PARSESEEMESSAGES_H
 
+#include "types.h"
+
 namespace Parser
 {
   /**

@@ -24,7 +24,10 @@ add_executable(
   runTests
   main.cpp
   stringutils_test.cpp
+  see_test.cpp
   ../stringutils.cpp
+  ../parseseemessages.cpp
+  ../types.cpp
 )
 target_link_libraries(
   runTests

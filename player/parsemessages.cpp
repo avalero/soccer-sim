@@ -54,9 +54,6 @@ namespace Parser
     {
       if (m.starts_with("see"))
       {
-        std::cout << "SEE\n==================================================\n"
-                  << message << std::endl;
-        std::cout << m << std::endl;
         // extract time from messages
         player = parseMatchData(m, player);
         player = parseSeeMessage(m, player);

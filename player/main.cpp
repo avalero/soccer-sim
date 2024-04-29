@@ -77,6 +77,7 @@ int main(int argc, char *argv[])
                 cout << e.what() << endl;
             }
         } while (!received_message_content.find("(see") == std::string::npos || clock.toc() < 100);
+        cout << player << endl;
 
         // ACTION (whenever a see message is received)
 

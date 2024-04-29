@@ -21,10 +21,11 @@ ostream &operator<<(ostream &os, const SeeData &see)
 ostream &operator<<(ostream &os, const BallData &ball)
 {
   os << "\nBallData:\n-------------------\n";
-  os << "X:\t" << ball.x;
-  os << "\nY:\t" << ball.y;
-  os << "\nVx:\t" << ball.vx;
-  os << "\nVy:\t" << ball.vy;
+  os << "Distance:\t" << ball.distance;
+  os << "\nDirection:\t" << ball.direction;
+  os << "\nDistance Change:\t" << ball.distance_change;
+  os << "\nDirection Change:\t" << ball.direction_change;
+
   os << "\n-------------------\n";
   return os;
 }

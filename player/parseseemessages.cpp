@@ -14,11 +14,9 @@ namespace Parser
 
     auto see_message = splitInParenthesesGroups(message);
 
-    // std::cout << see_message[0] << std::endl;
     //  [ "see 0", "((b) 0 0 0 0)" ]
     for (string message : see_message)
     {
-      std::cout << message << std::endl;
       if (message.find("(b)") != std::string::npos)
       {
         player.see = SeeData{See::parseBallData(message, player.see)};
@@ -39,11 +37,11 @@ namespace Parser
 
       auto ball_message = splitInWords(message);
       // [ "((b)", "0", "0", "0", "0))" ]
-      auto x = std::stod(ball_message[1]);
-      auto y = std::stod(ball_message[2]);
-      auto vx = std::stod(ball_message[3]);
-      auto vy = std::stod(ball_message[4]);
-      see.ball = BallData{x, y, vx, vy};
+      auto distance = std::stod(ball_message[1]);
+      auto direction = std::stod(ball_message[2]);
+      auto distance_change = ball_message.size() > 3 ? std::stod(ball_message[3]) : 0;
+      auto direction_change = ball_message.size() > 4 ? std::stod(ball_message[4]) : 0;
+      see.ball = BallData{distance, direction, distance_change, direction_change};
       return see;
     }
 
