@@ -29,6 +29,7 @@ set(SOURCE_FILES
     stringutils.cpp 
     parsemessages.cpp
     parseseemessages.cpp
+    parsehearmessages.cpp
     types.cpp
     tictoc.cpp
 )

@@ -38,9 +38,10 @@ ostream &operator<<(ostream &os, const MatchData &match)
 
 ostream &operator<<(ostream &os, const Player &player)
 {
-  os << "Player:\n===================\n";
+  os << "Player:\n=====================================================\n";
   os << "Config: " << player.config;
   os << "Match: " << player.match;
   os << "See: " << player.see;
+  os << "Referee Message: " << player.referee_message;
   return os;
 }

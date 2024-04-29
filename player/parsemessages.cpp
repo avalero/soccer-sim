@@ -5,6 +5,7 @@
 #include <MinimalSocket/udp/UdpSocket.h>
 #include <vector>
 #include "parseseemessages.h"
+#include "parsehearmessages.h"
 
 using namespace std;
 
@@ -66,9 +67,12 @@ namespace Parser
       }
       else if (message.starts_with("hear"))
       {
+        cout << "Hear message: " << message << endl;
         // extract time from messages
         player = parseMatchData(message, player);
-        // TODO
+
+        player = parseHearMessage(message, player);
+        cout << player << endl;
       }
       else if (message.starts_with("change_player_type") || message.starts_with("ok"))
       {

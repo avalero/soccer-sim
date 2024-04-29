@@ -3,6 +3,7 @@
 
 #include <string>
 #include <ostream>
+#include <array>
 
 using namespace std;
 
@@ -26,6 +27,13 @@ struct BallData
   double vy;
 };
 
+enum REFEREE_MESSAGE
+{
+  DROP_BALL,
+  PLAY_ON,
+  UNKNOWN
+};
+
 struct MatchData
 {
   int time;
@@ -41,6 +49,7 @@ struct Player
   MatchInit config;
   MatchData match;
   SeeData see;
+  REFEREE_MESSAGE referee_message;
 };
 
 ostream &operator<<(ostream &os, const MatchInit &response);
