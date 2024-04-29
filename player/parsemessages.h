@@ -6,13 +6,33 @@
 
 #include <MinimalSocket/udp/UdpSocket.h>
 
-/**
- * Parse the initial message from the server
- * @param message initial message from the server
- * @return MatchInitResponse with the field and number
- * @example parseInitialMessage("(init l 1)") -> MatchInitResponse{LEFT, 1}
- */
-MatchInitResponse parseInitialMessage(const std::string &message);
+namespace Parser
+{
+
+  /**
+   * Player the match data from the server, for example the time
+   * @param message match data from the server
+   * @return MatchData
+   * @example PlayerMatchData("(see 0)") -> MatchData{0}
+   */
+  Player &parseMatchData(const std::string &message, Player &player);
+
+  /**
+   * Player the initial message from the server
+   * @param message initial message from the server
+   * @return MatchInitResponse with the field and number
+   * @example PlayerInitialMessage("(init l 1)") -> MatchInitResponse{LEFT, 1}
+   */
+  Player &parseInitialMessage(const std::string &message, Player &player);
+
+  /**
+   * Player the server message
+   * @param message server message
+   * @return Player
+   */
+  Player &parseSeverMessage(const std::string &message, Player &player);
+
+} // namespace Parser
 
 /**
  * Send the initial move message to the server
@@ -25,4 +45,4 @@ MatchInitResponse parseInitialMessage(const std::string &message);
 void sendInitialMoveMessage(const Player &player,
                             MinimalSocket::udp::Udp<true> &udp_socket,
                             MinimalSocket::Address const &recipient);
-#endif // PARSEMESSAGES_H
+#endif // PlayerMESSAGES_H

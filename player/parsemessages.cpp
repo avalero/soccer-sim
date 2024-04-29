@@ -2,25 +2,95 @@
 
 #include "stringutils.h"
 #include "types.h"
-#include "parsemessages.h"
 #include <MinimalSocket/udp/UdpSocket.h>
 #include <vector>
+#include "parseseemessages.h"
 
 using namespace std;
 
-MatchInitResponse parseInitialMessage(const std::string &message)
+namespace Parser
 {
-  auto initial_message = splitInParenthesesGroups(message);
-  auto initial_message_content = splitInWords(initial_message[0]);
-  //[ "init", "l", "1" ];
-  if (initial_message_content[0] != "init")
+
+  /** (message time ...)
+   * example: (see 328 ...)
+   *
+   */
+  Player &parseMatchData(const std::string &message, Player &player)
   {
-    throw std::runtime_error("Invalid initial message");
+    auto match_data_content = splitInWords(message);
+    //[ "(message", "328", ... ];
+    try
+    {
+      player.match.time = std::stoi(match_data_content[1]);
+    }
+    catch (const std::exception &e)
+    {
+      cout << "Error parsing time: " << e.what() << endl;
+    }
+    return player;
   }
-  auto field = initial_message_content[1] == "l" ? FIELD::LEFT : FIELD::RIGHT;
-  auto number = std::stoi(initial_message_content[2]);
-  return MatchInitResponse{field, number};
-}
+
+  Player &parseInitialMessage(const std::string &message, Player &player)
+  {
+    auto initial_message = splitInParenthesesGroups(message);
+    auto initial_message_content = splitInWords(initial_message[0]);
+    //[ "init", "l", "1" ];
+    if (initial_message_content[0] != "init")
+    {
+      throw std::runtime_error("Invalid initial message");
+    }
+    auto field = initial_message_content[1] == "l" ? FIELD::LEFT : FIELD::RIGHT;
+    auto number = std::stoi(initial_message_content[2]);
+    player.config = MatchInit{field, number};
+    return player;
+  }
+
+  Player &parseSeverMessage(const std::string &message, Player &player)
+  {
+    auto messages = splitInParenthesesGroups(message);
+
+    for (string message : messages)
+    {
+
+      if (message.starts_with("see"))
+      {
+        // extract time from messages
+        player = parseMatchData(message, player);
+        player = parseSeeMessage(message, player);
+      }
+      else if (message.starts_with("sense_body"))
+      {
+        // extract time from messages
+        player = parseMatchData(message, player);
+        // TODO
+      }
+      else if (message.starts_with("hear"))
+      {
+        // extract time from messages
+        player = parseMatchData(message, player);
+        // TODO
+      }
+      else if (message.starts_with("change_player_type") || message.starts_with("ok"))
+      {
+        // TODO
+      }
+      else if (message.starts_with("player_type"))
+      {
+        // TODO
+      }
+      else if (message.starts_with("player_param"))
+      {
+        // TODO
+      }
+      else
+      {
+        cout << "Message not recognized: " << message << endl;
+      }
+    }
+    return player;
+  }
+
+} // namespace Player
 
 void sendInitialMoveMessage(const Player &player,
                             MinimalSocket::udp::Udp<true> &udp_socket,

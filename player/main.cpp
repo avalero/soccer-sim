@@ -54,22 +54,35 @@ int main(int argc, char *argv[])
     MinimalSocket::Address server_udp = MinimalSocket::Address{"127.0.0.1", other_sender_udp.getPort()};
 
     Player player;
-    player.config = parseInitialMessage(received_message_content);
+    player = Parser::parseInitialMessage(received_message_content, player);
     cout << player << endl;
     sendInitialMoveMessage(player, udp_socket, server_udp);
 
     TicToc clock;
     clock.tic();
+    unsigned long cycle = 0;
     while (1)
     {
-        while (clock.toc() < 100)
+        // PROCESS MESSAGES
+        do
         {
-            std::this_thread::sleep_for(std::chrono::milliseconds(1));
-        }
+            auto received_message = udp_socket.receive(message_max_size);
+            std::string received_message_content = received_message->received_message;
+            try
+            {
+                player = Parser::parseSeverMessage(received_message_content, player);
+            }
+            catch (const std::exception &e)
+            {
+                cout << e.what() << endl;
+            }
+        } while (!received_message_content.find("(see") == std::string::npos || clock.toc() < 100);
+
+        // ACTION (whenever a see message is received)
+
+        // cout << "time: " << clock.toc() << "ms" << endl;
         clock.tic();
-        auto received_message = udp_socket.receive(message_max_size);
-        std::string received_message_content = received_message->received_message;
-        // cout << received_message_content << endl;
+        // cout << player << endl;
 
         // PROCESS THE DATA AND SEND A COMMAND TO THE SERVER
 

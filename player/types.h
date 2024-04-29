@@ -12,18 +12,42 @@ enum FIELD
   RIGHT
 };
 
-struct MatchInitResponse
+struct MatchInit
 {
   FIELD field;
   int number;
 };
 
-struct Player
+struct BallData
 {
-  MatchInitResponse config;
+  double x;
+  double y;
+  double vx;
+  double vy;
 };
 
-ostream &operator<<(ostream &os, const MatchInitResponse &response);
+struct MatchData
+{
+  int time;
+};
+
+struct SeeData
+{
+  BallData ball;
+};
+
+struct Player
+{
+  MatchInit config;
+  MatchData match;
+  SeeData see;
+};
+
+ostream &operator<<(ostream &os, const MatchInit &response);
+
+ostream &operator<<(ostream &os, const SeeData &see);
+ostream &operator<<(ostream &os, const BallData &ball);
+ostream &operator<<(ostream &os, const MatchData &match);
 
 ostream &operator<<(ostream &os, const Player &player);
 
