@@ -34,6 +34,7 @@ Clients for RoboCup Soccer Simulator
 ### [pOESIA FC++](https://github.com/veroxandra/RoboCup)
 
 [Vídeo entrega 1](https://www.youtube.com/watch?v=EZj3Ui9sVZA)
+[Vídeo entrega 2](https://youtu.be/WoG46Dlhj4k)
 
  - Marcos
  - Verónica
