@@ -15,6 +15,7 @@ Clients for RoboCup Soccer Simulator
 ### [Aston Birras](https://github.com/manumorales98/robocup)
 
 [Vídeo entrega 1](https://www.youtube.com/watch?v=8vt_QR-CHFo)
+[Vídeo entrega 2](https://www.youtube.com/watch?v=OzB2HugwDEM)
 
  - Manuel
  - Antonio
