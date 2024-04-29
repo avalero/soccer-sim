@@ -24,6 +24,7 @@ Clients for RoboCup Soccer Simulator
 ### [Nottingham Miedo](https://github.com/NachoGarciaGodin/RoboCup-Equipo2)
 
 [Video entrega 1](https://youtu.be/3fuRao7tuGI )
+[Vídeo entrega 2](https://www.youtube.com/watch?v=uIfhe0E4dRY)
 
  - Nacho
  - Daniel
