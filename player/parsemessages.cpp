@@ -26,7 +26,7 @@ namespace Parser
     }
     catch (const std::exception &e)
     {
-      cout << "Error parsing time: " << e.what() << endl;
+      throw std::runtime_error("Error parsing time: " + e.what());
     }
     return player;
   }
