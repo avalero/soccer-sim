@@ -26,7 +26,7 @@ Clients for RoboCup Soccer Simulator
   * [Entrega 2](https://www.youtube.com/watch?v=uvWAVy6LjdQ)
   * [Entrega 3](https://www.youtube.com/watch?v=H4AYE0U0pqw)
 
-### [FC Oesía]
+### [FC Oesía](https://github.com/andriana2/FC_Oesia)
   * [Entrega 1](https://youtu.be/4RjC6QyC7q8)
   * [Entrega 2](https://youtu.be/f-2Kgo2raDM?si=GUTLZu8N94sT-041)
   * [Entrega 3](https://www.youtube.com/watch?v=Tzo-u01p2M0)
